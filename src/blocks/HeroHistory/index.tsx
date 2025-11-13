@@ -1,20 +1,10 @@
-import ProgressBar from '../../components/ProgressBar';
 import './style.scss';
 
-import imgHTML from '../../assets/html.png';
-import imgCSS from '../../assets/css.png';
-import imgJS from '../../assets/js.png';
-import imgReact from '../../assets/react.png';
-import imgVue from '../../assets/vue.png';
-import imgPHP from '../../assets/php.png';
-import imgMySql from '../../assets/mysql.png';
-import imgMongoDB from '../../assets/mongodb.png';
-
-interface HeroSkillsProps {
+interface HeroHistoryProps {
   ref: React.Ref<HTMLDivElement>
 }
 
-function HeroHistory(props: HeroSkillsProps) {
+function HeroHistory(props: HeroHistoryProps) {
   // RERFS
   const { ref } = props;
 
