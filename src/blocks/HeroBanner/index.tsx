@@ -12,14 +12,11 @@ function HeroBanner() {
   // CONTEXTS
   const { position } = useContext(AppContext);
 
-  // STATE
-  const isTop = useMemo(() => position === 0, [position]);
-
   // RENDER
   return (
     <div className="hero-banner">
-      <img className={isTop ? "--active" : ""} src={myImage} alt='Hoàng Minh Ngọc' />
-      <img className={!isTop ? "--active" : ""} src={myWrite} alt='Hoàng Minh Ngọc' />
+      <img className={position === 'welcome' ? "--active" : ""} src={myImage} alt='Hoàng Minh Ngọc' />
+      <img className={position === 'info' ? "--active" : ""} src={myWrite} alt='Hoàng Minh Ngọc' />
       <img className={''} src={myLaptop} alt='Hoàng Minh Ngọc' />
     </div>
   )

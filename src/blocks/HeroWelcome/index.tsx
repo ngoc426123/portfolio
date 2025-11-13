@@ -1,9 +1,16 @@
 import './style.scss';
 
-function HeroWelcome() {
+interface HeroWelcomeProps {
+  ref: React.Ref<HTMLDivElement>;
+}
+
+function HeroWelcome(props: HeroWelcomeProps) {
+  // PROPS
+  const { ref } = props;
+
   // RENDER
   return (
-    <div className="hero-welcome">
+    <div className="hero-welcome" ref={ref}>
       <h3 className="hero-welcome__wel-text">Welcome!</h3>
       <h2 className="hero-welcome__title">I am Frontend Developer</h2>
       <div className="hero-welcome__desc">

@@ -21,11 +21,17 @@
     font-size: 1.6rem;
     line-height: 2.6rem;
     font-weight: 300;
+    padding: 3rem 2.5rem;
+    background-color: rgba(#ffffff, 0.1);
+    border: solid 0.1rem rgba(#ffffff, 0.2);
+    box-shadow: 0 0.4rem 3rem rgba(#000000, 0.2);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(0.61rem);
   }
 
   &__metadata {
     max-width: 70rem;
-    margin-top: 2.5rem;
+    margin-top: 3.5rem;
   
     dl {
       display: flex;
@@ -43,15 +49,6 @@
         margin-top: 1.5rem;
         font-weight: 300;
         position: relative;
-
-        &::before {
-          content: ":";
-          font-weight: 300;
-          line-height: 2rem;
-          position: absolute;
-          top: 0.1rem;
-          left: -0.8rem;
-        }
       }
     }
   }

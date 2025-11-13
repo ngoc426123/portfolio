@@ -1,26 +1,43 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.scss'
 
-// COMPONENTS
-import HeroBanner from './components/HeroBanner'
-import HeroWelcome from './components/HeroWelcome'
-import HeroInfo from './components/HeroInfo'
-import HeroSkills from './components/HeroSkills'
+// BLOCKS
+import HeroBanner from './blocks/HeroBanner'
+import HeroWelcome from './blocks/HeroWelcome'
+import HeroInfo from './blocks/HeroInfo'
+import HeroSkills from './blocks/HeroSkills'
 
 // CONTEXTS
 import { AppContext } from './contexts/AppContent'
 
+// BACKGROUND
+import bg from "./assets/bg.png";
+
 function App() {
   // REFS
   const _contentRef = useRef<HTMLDivElement>(null);
+  const _welcomeRef = useRef<HTMLDivElement>(null);
+  const _infoRef = useRef<HTMLDivElement>(null);
 
   // STATE
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState<String>('');
 
   // SIDE EFFECTS
   useEffect(() => {
     const handleScroll = () => {
-      setPosition(_contentRef.current?.scrollTop || 0);
+      const windowScrollTop = _contentRef.current?.scrollTop || 0;
+      const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
+      const infoOffset = _infoRef.current?.offsetTop || 0;
+
+      if (welcomeOffset <= windowScrollTop + 100 && windowScrollTop + 100 < infoOffset) {
+        setPosition('welcome');
+        return;
+      }
+
+      if (infoOffset <= windowScrollTop + 100) {
+        setPosition('info');
+        return;
+      }
     };
 
     _contentRef.current?.addEventListener('scroll', handleScroll);
@@ -32,13 +49,13 @@ function App() {
   // RENDER
   return (
     <AppContext.Provider value={{ position }}>
-      <div className={`app ${position === 0 ? '--at-top' : ''}`}>
+      <div className='app' style={{ backgroundImage: `url(${bg})` }}>
         <div className="app__banner">
           <HeroBanner />
         </div>
         <div className="app__content" ref={_contentRef}>
-          <HeroWelcome />
-          <HeroInfo />
+          <HeroWelcome ref={_welcomeRef}/>
+          <HeroInfo ref={_infoRef}/>
           <HeroSkills />
         </div>
       </div>

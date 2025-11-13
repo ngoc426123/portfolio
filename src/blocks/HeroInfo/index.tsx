@@ -1,9 +1,16 @@
 import './style.scss';
 
-function Hero() {
+interface HeroInfoProps {
+  ref: React.Ref<HTMLDivElement>;
+}
+
+function HeroInfo(props: HeroInfoProps) {
+  // PROPS
+  const { ref } = props;
+
   // RENDER
   return (
-    <div className="hero-info">
+    <div className="hero-info" ref={ref}>
       <h1 className="hero-info__name">Hello, I'm <span>Hoàng Minh Ngọc</span></h1>
       <div className="hero-info__desc">
         <p>
@@ -31,4 +38,4 @@ function Hero() {
   )
 }
 
-export default Hero;
+export default HeroInfo;
