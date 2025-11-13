@@ -6,6 +6,7 @@ import HeroBanner from './blocks/HeroBanner'
 import HeroWelcome from './blocks/HeroWelcome'
 import HeroInfo from './blocks/HeroInfo'
 import HeroSkills from './blocks/HeroSkills'
+import HeroHistory from './blocks/HeroHistory'
 
 // CONTEXTS
 import { AppContext } from './contexts/AppContent'
@@ -19,6 +20,7 @@ function App() {
   const _welcomeRef = useRef<HTMLDivElement>(null);
   const _infoRef = useRef<HTMLDivElement>(null);
   const _skillsRef = useRef<HTMLDivElement>(null);
+  const _historyRef = useRef<HTMLDivElement>(null);
 
   // STATE
   const [position, setPosition] = useState<String>('welcome');
@@ -32,6 +34,7 @@ function App() {
       const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
       const infoOffset = _infoRef.current?.offsetTop || 0;
       const skillsOffset = _skillsRef.current?.offsetTop || 0;
+      const historyOffset = _historyRef.current?.offsetTop || 0;
 
       if (welcomeOffset <= windowScrollTop + 100 && windowScrollTop + 100 < infoOffset - ratioMinus) {
         setPosition('welcome');
@@ -43,8 +46,13 @@ function App() {
         return;
       }
 
-      if (skillsOffset - ratioMinus <= windowScrollTop + 100) {
+      if (skillsOffset - ratioMinus <= windowScrollTop + 100 && windowScrollTop + 100 < historyOffset - ratioMinus) {
         setPosition('skills');
+        return;
+      }
+
+      if (historyOffset - ratioMinus <= windowScrollTop + 100) {
+        setPosition('history');
         return;
       }
     };
@@ -66,6 +74,7 @@ function App() {
           <HeroWelcome ref={_welcomeRef}/>
           <HeroInfo ref={_infoRef}/>
           <HeroSkills ref={_skillsRef}/>
+          <HeroHistory ref={_historyRef}/>
         </div>
       </div>
     </AppContext.Provider>
