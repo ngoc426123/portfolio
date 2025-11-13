@@ -1,0 +1,60 @@
+.hero-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+
+  &__wel-text {
+    margin-bottom: 1.2rem;
+    font-size: 4.2rem;
+    line-height: 125%;
+    color: var(--primary);
+  }
+
+  &__title {
+    font-size: 5.2rem;
+    font-weight: 100;
+    animation: flash-light 3s ease-in-out infinite;
+  }
+
+  &__desc {
+    max-width: 60rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+
+  &__metadata {
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5rem;
+      height: 5rem;
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      border: solid 0.1rem var(--primary);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--primary);
+        color: var(--white);
+      }
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+
+      span {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
