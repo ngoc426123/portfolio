@@ -18,24 +18,33 @@ function App() {
   const _contentRef = useRef<HTMLDivElement>(null);
   const _welcomeRef = useRef<HTMLDivElement>(null);
   const _infoRef = useRef<HTMLDivElement>(null);
+  const _skillsRef = useRef<HTMLDivElement>(null);
 
   // STATE
-  const [position, setPosition] = useState<String>('');
+  const [position, setPosition] = useState<String>('welcome');
 
   // SIDE EFFECTS
   useEffect(() => {
     const handleScroll = () => {
+      const windownHeight = window.innerHeight;
+      const ratioMinus = windownHeight / 3;
       const windowScrollTop = _contentRef.current?.scrollTop || 0;
       const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
       const infoOffset = _infoRef.current?.offsetTop || 0;
+      const skillsOffset = _skillsRef.current?.offsetTop || 0;
 
-      if (welcomeOffset <= windowScrollTop + 100 && windowScrollTop + 100 < infoOffset) {
+      if (welcomeOffset <= windowScrollTop + 100 && windowScrollTop + 100 < infoOffset - ratioMinus) {
         setPosition('welcome');
         return;
       }
 
-      if (infoOffset <= windowScrollTop + 100) {
+      if (infoOffset - ratioMinus <= windowScrollTop + 100 && windowScrollTop + 100 < skillsOffset - ratioMinus) {
         setPosition('info');
+        return;
+      }
+
+      if (skillsOffset - ratioMinus <= windowScrollTop + 100) {
+        setPosition('skills');
         return;
       }
     };
@@ -56,7 +65,7 @@ function App() {
         <div className="app__content" ref={_contentRef}>
           <HeroWelcome ref={_welcomeRef}/>
           <HeroInfo ref={_infoRef}/>
-          <HeroSkills />
+          <HeroSkills ref={_skillsRef}/>
         </div>
       </div>
     </AppContext.Provider>
