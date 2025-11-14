@@ -5,6 +5,7 @@ import 'lenis/dist/lenis.css'
 import './App.scss'
 
 // BLOCKS
+import HeroLoading from './blocks/HeroLoading'
 import HeroBanner from './blocks/HeroBanner'
 import HeroWelcome from './blocks/HeroWelcome'
 import HeroInfo from './blocks/HeroInfo'
@@ -35,7 +36,7 @@ function App() {
   const handleScroll = (_contentRef: HTMLDivElement) => {
     const windownHeight = window.innerHeight;
       const ratioMinus = windownHeight / 3;
-      const windowScrollTop = _contentRef.scrollTop || 0;
+      const windowScrollTop = window.scrollY || 0;
       const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
       const infoOffset = _infoRef.current?.offsetTop || 0;
       const skillsOffset = _skillsRef.current?.offsetTop || 0;
@@ -78,41 +79,41 @@ function App() {
   useEffect(() => {
     const _contentRef = _lenisRef?.current?.wrapper || document.createElement('div') as HTMLDivElement;
 
-    _contentRef?.addEventListener('scroll', () => handleScroll(_contentRef));
+    window.addEventListener('scroll', () => handleScroll(_contentRef));
 
-    setTimeout(() => {
-      document.querySelector('.loading')?.classList.add('--hide');
-      setReady(true);
-    }, 3000);
+    setTimeout(() => {setReady(true);}, 3000);
     return () => {
-      _contentRef?.removeEventListener('scroll', () => handleScroll(_contentRef));
+      window.removeEventListener('scroll', () => handleScroll(_contentRef));
     };
   }, [_lenisRef]);
 
   // RENDER
   return (
-    <div className='app' style={{ backgroundImage: `url(${bg})` }}>
-      <div className='app__banner'>
-        <HeroBanner position={position} ready={ready}/>
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.2,
+        duration: 1.6,
+        autoRaf: true,
+      }}
+      ref={_lenisRef}
+    >
+      <div className='app'>
+        <div className='app__banner'>
+          <HeroBanner position={position} ready={ready}/>
+        </div>
+        <div className='app__content'>
+          <LenisControls ready={ready}/>
+          <HeroWelcome ref={_welcomeRef} ready={ready}/>
+          <HeroInfo ref={_infoRef} ready={ready}/>
+          <HeroSkills ref={_skillsRef}  ready={ready}/>
+          <HeroJourney ref={_journeyRef}/>
+          <HeroProduct ref={_productRef}/>
+          <HeroThanks ref={_thanksRef}/>
+        </div>
+        <HeroLoading ready={ready}/>
       </div>
-      <ReactLenis
-        className={`app__content ${!ready ? '--freeze': ''}`}
-        options={{
-          lerp: 0.2,
-          duration: 1.6,
-          autoRaf: true,
-        }}
-        ref={_lenisRef}
-      >
-        <LenisControls ready={ready}/>
-        <HeroWelcome ready={ready} ref={_welcomeRef}/>
-        <HeroInfo ref={_infoRef}/>
-        <HeroSkills ref={_skillsRef}/>
-        <HeroJourney ref={_journeyRef}/>
-        <HeroProduct ref={_productRef}/>
-        <HeroThanks ref={_thanksRef}/>
-      </ReactLenis>
-    </div>
+    </ReactLenis>
   )
 }
 

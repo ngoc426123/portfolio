@@ -1,0 +1,12 @@
+.hero-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s linear;
+
+  &.\--hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

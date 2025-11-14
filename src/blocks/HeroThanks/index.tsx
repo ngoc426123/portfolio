@@ -1,13 +1,7 @@
+import { forwardRef } from 'react';
 import './style.scss';
 
-interface HeroThanksProps {
-  ref: React.Ref<HTMLDivElement>;
-}
-
-function HeroThanks(props: HeroThanksProps) {
-  // PROPS
-  const { ref } = props;
-
+const HeroThanks = forwardRef<HTMLDivElement>((__, ref) => {
   // RENDER
   return (
     <div className="hero-thanks" ref={ref}>
@@ -30,6 +24,8 @@ function HeroThanks(props: HeroThanksProps) {
       </div>
     </div>
   )
-}
+});
+
+HeroThanks.displayName = 'HeroThanks';
 
 export default HeroThanks;

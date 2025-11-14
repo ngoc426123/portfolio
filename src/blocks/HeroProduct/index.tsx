@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/swiper.css';
@@ -19,13 +20,7 @@ import pageMPFA from '../../assets/pages/mpfa.jpg';
 import pageTimeInAir from '../../assets/pages/time-in-air.jpg';
 import pageVisaNow from '../../assets/pages/visa-now.jpg';
 
-interface HeroProductProps {
-  ref: React.Ref<HTMLDivElement>
-}
-
-function HeroProduct(props: HeroProductProps) {
-  // RERFS
-  const { ref } = props;
+const HeroProduct = forwardRef<HTMLDivElement>((__, ref) => {
 
   // RENDER
   return (
@@ -156,6 +151,8 @@ function HeroProduct(props: HeroProductProps) {
       </div>
     </div>
   );
-}
+});
+
+HeroProduct.displayName = 'HeroProduct';
 
 export default HeroProduct;

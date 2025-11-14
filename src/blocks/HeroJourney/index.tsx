@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import './style.scss';
 
 // IMAGES
@@ -5,14 +7,7 @@ import imgSutrix from '../../assets/company/logo-sutrix.jpg';
 import imgTrust from '../../assets/company/logo-trustvn.jpg';
 import imgChoixanh from '../../assets/company/logo-choixanh.jpg';
 
-interface HeroJourneyProps {
-  ref: React.Ref<HTMLDivElement>
-}
-
-function HeroJourney(props: HeroJourneyProps) {
-  // RERFS
-  const { ref } = props;
-
+const HeroJourney = forwardRef<HTMLDivElement>((__, ref) => {
   // RENDER
   return (
     <div className="hero-journey" ref={ref}>
@@ -73,6 +68,8 @@ function HeroJourney(props: HeroJourneyProps) {
       </div>
     </div>
   );
-}
+});
+
+HeroJourney.displayName = 'HeroJourney';
 
 export default HeroJourney;

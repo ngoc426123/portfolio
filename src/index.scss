@@ -22,7 +22,33 @@ html, body {
   font-family: "Roboto", sans-serif;
   font-size: 10px;
   line-height: 1.5;
-  color: var(--white)
+  color: var(--white);
+  background-image: url(./assets/bg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: var(--black);
+
+  /* width */
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: rgba(#0a0615, 0.2);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 0.25rem;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--white);
+    }
 }
 
 img {

@@ -1,16 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { forwardRef } from 'react';
 import gsap from 'gsap';
+import { useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import './style.scss';
 
 gsap.registerPlugin(useGSAP);
 
 interface HeroWelcomeProps {
-  ref: React.Ref<HTMLDivElement>;
   ready: Boolean;
 }
 
-function HeroWelcome(props: HeroWelcomeProps) {
+const HeroWelcome = forwardRef<HTMLDivElement, HeroWelcomeProps>((props, ref) => {
   // REFS
   const _welcomeRef = useRef<HTMLDivElement>(null);
   const _titleRef = useRef<HTMLDivElement>(null);
@@ -18,30 +18,71 @@ function HeroWelcome(props: HeroWelcomeProps) {
   const _metaDataRef = useRef<HTMLDivElement>(null);
 
   // PROPS
-  const { ref, ready } = props;
+  const { ready } = props;
+
+  // METHODS
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    const duration = 2;
+
+    if (
+      _welcomeRef.current &&
+      _welcomeRef.current?.getBoundingClientRect().top > 0 &&
+      _welcomeRef.current?.getBoundingClientRect().top < windowHeight) 
+    {
+      gsap.to(
+        _welcomeRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+
+    if (
+      _titleRef.current &&
+      _titleRef.current?.getBoundingClientRect().top > 0 &&
+      _titleRef.current?.getBoundingClientRect().top < windowHeight) 
+    {
+      gsap.to(
+        _titleRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+
+    if (
+      _descRef.current &&
+      _descRef.current?.getBoundingClientRect().top > 0 &&
+      _descRef.current?.getBoundingClientRect().top < windowHeight) 
+    {
+      gsap.to(
+        _descRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+
+    if (
+      _metaDataRef.current &&
+      _metaDataRef.current?.getBoundingClientRect().top > 0 &&
+      _metaDataRef.current?.getBoundingClientRect().top < windowHeight) 
+    {
+      gsap.to(
+        _metaDataRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+  };
 
   // SIDE EFFECTS
   useEffect(() => {
-    gsap.set(_welcomeRef.current, { y: 50, opacity: 0 });
-    gsap.set(_titleRef.current, { y: 50, opacity: 0 });
-    gsap.set(_descRef.current, { y: 50, opacity: 0 });
-    gsap.set(_metaDataRef.current, { y: 50, opacity: 0 });
-  }, [])
+    gsap.set(_welcomeRef.current, { y: 100, opacity: 0 });
+    gsap.set(_titleRef.current, { y: 100, opacity: 0 });
+    gsap.set(_descRef.current, { y: 100, opacity: 0 });
+    gsap.set(_metaDataRef.current, { y: 100, opacity: 0 });
+  }, []);
+
   useEffect(() => {
     if (!ready) return;
 
-    gsap.to(
-      _welcomeRef.current, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-    );
-    gsap.to(
-      _titleRef.current, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.5 }
-    );
-    gsap.to(
-      _descRef.current, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1 }
-    );
-    gsap.to(
-      _metaDataRef.current, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1.5 }
-    );
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
   }, [ready]);
 
   // RENDER
@@ -70,6 +111,8 @@ function HeroWelcome(props: HeroWelcomeProps) {
       </div>
     </div>
   )
-}
+});
+
+HeroWelcome.displayName = 'HeroWelcome';
 
 export default HeroWelcome;
