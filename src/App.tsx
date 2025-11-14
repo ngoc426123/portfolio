@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import { ReactLenis  } from 'lenis/react'
+import type { LenisRef } from 'lenis/react'
+import 'lenis/dist/lenis.css'
 import './App.scss'
 
 // BLOCKS
@@ -15,7 +18,7 @@ import bg from "./assets/bg.png";
 
 function App() {
   // REFS
-  const _contentRef = useRef<HTMLDivElement>(null);
+  const _lenisRef = useRef<LenisRef>(null);
   const _welcomeRef = useRef<HTMLDivElement>(null);
   const _infoRef = useRef<HTMLDivElement>(null);
   const _skillsRef = useRef<HTMLDivElement>(null);
@@ -28,10 +31,12 @@ function App() {
 
   // SIDE EFFECTS
   useEffect(() => {
+    const _contentRef = _lenisRef?.current?.wrapper || document.createElement('div') as HTMLDivElement;
+
     const handleScroll = () => {
       const windownHeight = window.innerHeight;
       const ratioMinus = windownHeight / 3;
-      const windowScrollTop = _contentRef.current?.scrollTop || 0;
+      const windowScrollTop = _contentRef.scrollTop || 0;
       const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
       const infoOffset = _infoRef.current?.offsetTop || 0;
       const skillsOffset = _skillsRef.current?.offsetTop || 0;
@@ -70,9 +75,9 @@ function App() {
       }
     };
 
-    _contentRef.current?.addEventListener('scroll', handleScroll);
+    _contentRef?.addEventListener('scroll', handleScroll);
     return () => {
-      _contentRef.current?.removeEventListener('scroll', handleScroll);
+      _contentRef?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -82,14 +87,14 @@ function App() {
       <div className="app__banner">
         <HeroBanner position={position}/>
       </div>
-      <div className="app__content" ref={_contentRef}>
+      <ReactLenis className='app__content' ref={_lenisRef}>
         <HeroWelcome ref={_welcomeRef}/>
         <HeroInfo ref={_infoRef}/>
         <HeroSkills ref={_skillsRef}/>
         <HeroJourney ref={_journeyRef}/>
         <HeroProduct ref={_productRef}/>
         <HeroThanks ref={_thanksRef}/>
-      </div>
+      </ReactLenis>
     </div>
   )
 }
