@@ -1,0 +1,153 @@
+.hero-journey {
+  $this: &;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 10rem 0;
+
+  &__title {
+    font-size: 3.4rem;
+    font-weight: 700;
+
+    span {
+      font-size: 4.8rem;
+      color: var(--primary);
+    }
+  }
+
+  &__desc {
+    max-width: 60rem;
+    margin-top: 2.5rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: 300;
+  }
+
+  &__timeline {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 90rem;
+    margin-top: 10rem;
+    padding: 2rem 0;
+    position: relative;
+  }
+
+  &__y-axis {
+    width: 0.4rem;
+    height: 100%;
+    background-color: rgba(#ffffff, 0.5);
+    box-shadow: 0 0.4rem 3rem rgba(#000000, 0.2);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &::before {
+      content: "";
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(#ffffff, 0.5);
+      border-radius: 50%;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      content: "";
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(#ffffff, 0.5);
+      border-radius: 50%;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__item {
+    display: flex;
+    padding: 4rem 0;
+    position: relative;
+    z-index: 1;
+
+    &.\--left {
+      justify-content: flex-start;
+
+      #{$this}__item-img {
+        margin-left: -8rem;
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      #{$this}__item-contain {
+        text-align: right;
+      }
+    }
+
+    &.\--right {
+      justify-content: flex-end;
+
+      #{$this}__item-img {
+        margin-left: 8rem;
+
+        &::before {
+          right: 100%;
+        }
+      }
+
+      #{$this}__item-contain {
+        text-align: left;
+      }
+    }
+  }
+
+  &__item-img {
+    width: 6rem;
+    height: 6rem;
+    position: absolute;
+    top: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &::before {
+      content: "";
+      width: 4.8rem;
+      height: 0.4rem;
+      background-color: rgba(#ffffff, 0.5);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    img {
+      border-radius: 1rem;
+    }
+  }
+
+  &__item-contain {
+    width: calc(50% - 13rem);
+  }
+
+  &__item-date {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  &__item-name {
+    font-size: 3.6rem;
+    font-weight: 100;
+  }
+
+  &__item-content {
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    font-weight: 300;
+  }
+}

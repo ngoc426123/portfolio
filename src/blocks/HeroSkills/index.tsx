@@ -9,6 +9,9 @@ import imgVue from '../../assets/vue.png';
 import imgPHP from '../../assets/php.png';
 import imgMySql from '../../assets/mysql.png';
 import imgMongoDB from '../../assets/mongodb.png';
+import imgPhotoshop from '../../assets/photoshop.png';
+import imgIllustrator from '../../assets/illustrator.png';
+import imgFigma from '../../assets/figma.png';
 
 interface HeroSkillsProps {
   ref: React.Ref<HTMLDivElement>
@@ -23,62 +26,89 @@ function HeroSkills(props: HeroSkillsProps) {
     <div className="hero-skills" ref={ref}>
       <div className="hero-skills__title">My <span>Awesome </span>Skills</div>
       <div className="hero-skills__desc">Passionate about creating exceptional web experiences with modern technologies and clean, efficient code.</div>
-      <div className="hero-skills__grid">
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgHTML} alt="HTML" />
-            <span className='hero-skills__percent'>90%</span>
+      <div className="hero-skills__content">
+        <div className="hero-skills__title-skill">Develop skills</div>
+        <div className="hero-skills__grid">
+          <div className="hero-skills__item --span-2-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgHTML} alt="HTML" />
+              <span className='hero-skills__percent'>90%</span>
+            </div>
+            <ProgressBar progress={90} color='#f2662a'/>
           </div>
-          <ProgressBar progress={90} color='#f2662a'/>
+          <div className="hero-skills__item --span-2-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgCSS} alt="CSS" />
+              <span className='hero-skills__percent'>75%</span>
+            </div>
+            <ProgressBar progress={75} color='#2965f1'/>
+          </div>
+          <div className="hero-skills__item --span-2-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgJS} alt="JavaScript" />
+              <span className='hero-skills__percent'>80%</span>
+            </div>
+            <ProgressBar progress={80} color='#f0db4f'/>
+          </div> 
+          <div className="hero-skills__item --span-3-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgReact} alt="React" />
+              <span className='hero-skills__percent'>70%</span>
+            </div>
+            <ProgressBar progress={70} color='#61dafb'/>
+          </div>
+          <div className="hero-skills__item --span-3-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgVue} alt="Vue" />
+              <span className='hero-skills__percent'>70%</span>
+            </div>
+            <ProgressBar progress={70} color='#42b883'/>
+          </div>
+          <div className="hero-skills__item --span-6-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgPHP} alt="PHP" />
+              <span className='hero-skills__percent'>70%</span>
+            </div>
+            <ProgressBar progress={70} color='#777bb3'/>
+          </div>
+          <div className="hero-skills__item --span-3-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgMySql} alt="MySQL" />
+              <span className='hero-skills__percent'>70%</span>
+            </div>
+            <ProgressBar progress={70} color='#2f88c7'/>
+          </div>
+          <div className="hero-skills__item --span-3-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgMongoDB} alt="MongoDB" />
+              <span className='hero-skills__percent'>70%</span>
+            </div>
+            <ProgressBar progress={70} color='#28a13d'/>
+          </div>
         </div>
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgCSS} alt="CSS" />
-            <span className='hero-skills__percent'>75%</span>
+        <div className="hero-skills__title-skill">Application skills</div>
+        <div className="hero-skills__grid">
+            <div className="hero-skills__item --span-2-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgPhotoshop} alt="Photoshop" />
+              <span className='hero-skills__percent'>40%</span>
+            </div>
+            <ProgressBar progress={40} color='#31a8ff'/>
+            </div>
+          <div className="hero-skills__item --span-2-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgIllustrator} alt="Illustrator" />
+              <span className='hero-skills__percent'>25%</span>
+            </div>
+            <ProgressBar progress={25} color='#ff7f50'/>
           </div>
-          <ProgressBar progress={75} color='#2965f1'/>
-        </div>
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgJS} alt="JavaScript" />
-            <span className='hero-skills__percent'>80%</span>
-          </div>
-          <ProgressBar progress={80} color='#f0db4f'/>
-        </div> 
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgReact} alt="React" />
-            <span className='hero-skills__percent'>70%</span>
-          </div>
-          <ProgressBar progress={70} color='#61dafb'/>
-        </div>
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgVue} alt="Vue" />
-            <span className='hero-skills__percent'>70%</span>
-          </div>
-          <ProgressBar progress={70} color='#42b883'/>
-        </div>
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgPHP} alt="PHP" />
-            <span className='hero-skills__percent'>70%</span>
-          </div>
-          <ProgressBar progress={70} color='#777bb3'/>
-        </div>
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgMySql} alt="MySQL" />
-            <span className='hero-skills__percent'>70%</span>
-          </div>
-          <ProgressBar progress={70} color='#2f88c7'/>
-        </div>
-        <div className="hero-skills__item">
-          <div className="hero-skills__meta">
-            <img className="hero-skills__img" src={imgMongoDB} alt="MongoDB" />
-            <span className='hero-skills__percent'>70%</span>
-          </div>
-          <ProgressBar progress={70} color='#777bb3'/>
+          <div className="hero-skills__item --span-2-col">
+            <div className="hero-skills__meta">
+              <img className="hero-skills__img" src={imgFigma} alt="Figma" />
+              <span className='hero-skills__percent'>55%</span>
+            </div>
+            <ProgressBar progress={55} color='#a259ff'/>
+          </div> 
         </div>
       </div>
     </div>

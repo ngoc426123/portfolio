@@ -6,10 +6,7 @@ import HeroBanner from './blocks/HeroBanner'
 import HeroWelcome from './blocks/HeroWelcome'
 import HeroInfo from './blocks/HeroInfo'
 import HeroSkills from './blocks/HeroSkills'
-import HeroHistory from './blocks/HeroHistory'
-
-// CONTEXTS
-import { AppContext } from './contexts/AppContent'
+import HeroJourney from './blocks/HeroJourney'
 
 // BACKGROUND
 import bg from "./assets/bg.png";
@@ -20,7 +17,7 @@ function App() {
   const _welcomeRef = useRef<HTMLDivElement>(null);
   const _infoRef = useRef<HTMLDivElement>(null);
   const _skillsRef = useRef<HTMLDivElement>(null);
-  const _historyRef = useRef<HTMLDivElement>(null);
+  const _journeyRef = useRef<HTMLDivElement>(null);
 
   // STATE
   const [position, setPosition] = useState<String>('welcome');
@@ -34,7 +31,7 @@ function App() {
       const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
       const infoOffset = _infoRef.current?.offsetTop || 0;
       const skillsOffset = _skillsRef.current?.offsetTop || 0;
-      const historyOffset = _historyRef.current?.offsetTop || 0;
+      const historyOffset = _journeyRef.current?.offsetTop || 0;
 
       if (welcomeOffset <= windowScrollTop + 100 && windowScrollTop + 100 < infoOffset - ratioMinus) {
         setPosition('welcome');
@@ -65,19 +62,17 @@ function App() {
 
   // RENDER
   return (
-    <AppContext.Provider value={{ position }}>
-      <div className='app' style={{ backgroundImage: `url(${bg})` }}>
-        <div className="app__banner">
-          <HeroBanner />
-        </div>
-        <div className="app__content" ref={_contentRef}>
-          <HeroWelcome ref={_welcomeRef}/>
-          <HeroInfo ref={_infoRef}/>
-          <HeroSkills ref={_skillsRef}/>
-          <HeroHistory ref={_historyRef}/>
-        </div>
+    <div className='app' style={{ backgroundImage: `url(${bg})` }}>
+      <div className="app__banner">
+        <HeroBanner position={position}/>
       </div>
-    </AppContext.Provider>
+      <div className="app__content" ref={_contentRef}>
+        <HeroWelcome ref={_welcomeRef}/>
+        <HeroInfo ref={_infoRef}/>
+        <HeroSkills ref={_skillsRef}/>
+        <HeroJourney ref={_journeyRef}/>
+      </div>
+    </div>
   )
 }
 

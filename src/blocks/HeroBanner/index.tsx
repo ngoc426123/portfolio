@@ -5,13 +5,13 @@ import myBook from '../../assets/my-book.jpg';
 import myLaptop from '../../assets/my-laptop.jpg';
 import myWrite from '../../assets/my-write.jpg';
 
-// CONTEXTS
-import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContent";
+interface HeroBannerProps {
+  position: String;
+}
 
-function HeroBanner() {
+function HeroBanner(props: HeroBannerProps) {
   // CONTEXTS
-  const { position } = useContext(AppContext);
+  const { position } = props;
 
   // RENDER
   return (

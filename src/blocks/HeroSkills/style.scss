@@ -4,8 +4,7 @@
   justify-content: center;
   width: 100%;
   max-width: 90rem;
-  height: 100vh;
-  padding: 3.5rem 0;
+  padding: 10rem 0;
 
   &__title {
     font-size: 3.4rem;
@@ -25,22 +24,44 @@
     font-weight: 300;
   }
 
+  &__content {
+    margin-top: 5.5rem;
+  }
+
+  &__title-skill {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+  }
+
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem 2rem;
-    margin-top: 5.5rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4rem 3rem;
+    margin-bottom: 5rem;
   }
 
   &__item {
     position: relative;
+
+    &.\--span-2-col {
+      grid-column: span 2;
+    }
+
+    &.\--span-3-col {
+      grid-column: span 3;
+    }
+
+    &.\--span-6-col {
+      grid-column: span 6;
+    }
   }
 
   &__meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &__title {
@@ -50,7 +71,7 @@
   }
 
   &__img {
-    height: 6rem;
+    height: 3rem;
   }
 
   &__percent {
