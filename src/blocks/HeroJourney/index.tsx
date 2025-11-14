@@ -1,9 +1,9 @@
 import './style.scss';
 
 // IMAGES
-import imgSutrix from '../../assets/logo-sutrix.jpg';
-import imgTrust from '../../assets/logo-trustvn.jpg';
-import imgChoixanh from '../../assets/logo-choixanh.jpg';
+import imgSutrix from '../../assets/company/logo-sutrix.jpg';
+import imgTrust from '../../assets/company/logo-trustvn.jpg';
+import imgChoixanh from '../../assets/company/logo-choixanh.jpg';
 
 interface HeroJourneyProps {
   ref: React.Ref<HTMLDivElement>

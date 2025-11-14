@@ -1,0 +1,42 @@
+.hero-product {
+  $this: &;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 110rem;
+  padding: 10rem 0;
+
+  &__title {
+    font-size: 3.4rem;
+    font-weight: 700;
+
+    span {
+      font-size: 4.8rem;
+      color: var(--primary);
+    }
+  }
+
+  &__desc {
+    max-width: 60rem;
+    margin-top: 2.5rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: 300;
+  }
+
+  &__sub-title {
+    margin-top: 10rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  &__listing {
+    margin-top: 2rem;
+
+    .swiper-slide {
+      height: unset;
+    }
+  }
+}

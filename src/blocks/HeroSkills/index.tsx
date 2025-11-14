@@ -1,17 +1,17 @@
 import ProgressBar from '../../components/ProgressBar';
 import './style.scss';
 
-import imgHTML from '../../assets/html.png';
-import imgCSS from '../../assets/css.png';
-import imgJS from '../../assets/js.png';
-import imgReact from '../../assets/react.png';
-import imgVue from '../../assets/vue.png';
-import imgPHP from '../../assets/php.png';
-import imgMySql from '../../assets/mysql.png';
-import imgMongoDB from '../../assets/mongodb.png';
-import imgPhotoshop from '../../assets/photoshop.png';
-import imgIllustrator from '../../assets/illustrator.png';
-import imgFigma from '../../assets/figma.png';
+import imgHTML from '../../assets/skills/html.png';
+import imgCSS from '../../assets/skills/css.png';
+import imgJS from '../../assets/skills/js.png';
+import imgReact from '../../assets/skills/react.png';
+import imgVue from '../../assets/skills/vue.png';
+import imgPHP from '../../assets/skills/php.png';
+import imgMySql from '../../assets/skills/mysql.png';
+import imgMongoDB from '../../assets/skills/mongodb.png';
+import imgPhotoshop from '../../assets/skills/photoshop.png';
+import imgIllustrator from '../../assets/skills/illustrator.png';
+import imgFigma from '../../assets/skills/figma.png';
 
 interface HeroSkillsProps {
   ref: React.Ref<HTMLDivElement>
