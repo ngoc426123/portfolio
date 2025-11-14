@@ -87,7 +87,15 @@ function App() {
       <div className="app__banner">
         <HeroBanner position={position}/>
       </div>
-      <ReactLenis className='app__content' ref={_lenisRef}>
+      <ReactLenis
+        className='app__content'
+        options={{
+          lerp: 0.2,
+          duration: 1.6,
+          autoRaf: true,
+        }}
+        ref={_lenisRef}
+      >
         <HeroWelcome ref={_welcomeRef}/>
         <HeroInfo ref={_infoRef}/>
         <HeroSkills ref={_skillsRef}/>

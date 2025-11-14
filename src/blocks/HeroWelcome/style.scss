@@ -6,9 +6,9 @@
   height: 100vh;
 
   &__wel-text {
-    margin-bottom: 1.2rem;
-    font-size: 4.2rem;
-    line-height: 125%;
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 10rem;
+    line-height: normal;
     color: var(--primary);
   }
 
@@ -20,7 +20,7 @@
 
   &__desc {
     max-width: 60rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     font-size: 1.8rem;
     line-height: 2.8rem;
   }
