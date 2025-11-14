@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { ReactLenis  } from 'lenis/react'
+import { ReactLenis } from 'lenis/react'
 import type { LenisRef } from 'lenis/react'
 import 'lenis/dist/lenis.css'
 import './App.scss'
@@ -12,6 +12,7 @@ import HeroSkills from './blocks/HeroSkills'
 import HeroJourney from './blocks/HeroJourney'
 import HeroProduct from './blocks/HeroProduct'
 import HeroThanks from './blocks/HeroThanks'
+import LenisControls from './LenisControls'
 
 // BACKGROUND
 import bg from "./assets/bg.png";
@@ -28,13 +29,11 @@ function App() {
 
   // STATE
   const [position, setPosition] = useState<String>('welcome');
+  const [ready, setReady] = useState<Boolean>(false);
 
-  // SIDE EFFECTS
-  useEffect(() => {
-    const _contentRef = _lenisRef?.current?.wrapper || document.createElement('div') as HTMLDivElement;
-
-    const handleScroll = () => {
-      const windownHeight = window.innerHeight;
+  // METHODS
+  const handleScroll = (_contentRef: HTMLDivElement) => {
+    const windownHeight = window.innerHeight;
       const ratioMinus = windownHeight / 3;
       const windowScrollTop = _contentRef.scrollTop || 0;
       const welcomeOffset = _welcomeRef.current?.offsetTop || 0;
@@ -73,22 +72,31 @@ function App() {
         setPosition('thanks');
         return;
       }
-    };
+  };
 
-    _contentRef?.addEventListener('scroll', handleScroll);
+  // SIDE EFFECTS
+  useEffect(() => {
+    const _contentRef = _lenisRef?.current?.wrapper || document.createElement('div') as HTMLDivElement;
+
+    _contentRef?.addEventListener('scroll', () => handleScroll(_contentRef));
+
+    setTimeout(() => {
+      document.querySelector('.loading')?.classList.add('--hide');
+      setReady(true);
+    }, 3000);
     return () => {
-      _contentRef?.removeEventListener('scroll', handleScroll);
+      _contentRef?.removeEventListener('scroll', () => handleScroll(_contentRef));
     };
-  }, []);
+  }, [_lenisRef]);
 
   // RENDER
   return (
     <div className='app' style={{ backgroundImage: `url(${bg})` }}>
-      <div className="app__banner">
-        <HeroBanner position={position}/>
+      <div className='app__banner'>
+        <HeroBanner position={position} ready={ready}/>
       </div>
       <ReactLenis
-        className='app__content'
+        className={`app__content ${!ready ? '--freeze': ''}`}
         options={{
           lerp: 0.2,
           duration: 1.6,
@@ -96,7 +104,8 @@ function App() {
         }}
         ref={_lenisRef}
       >
-        <HeroWelcome ref={_welcomeRef}/>
+        <LenisControls ready={ready}/>
+        <HeroWelcome ready={ready} ref={_welcomeRef}/>
         <HeroInfo ref={_infoRef}/>
         <HeroSkills ref={_skillsRef}/>
         <HeroJourney ref={_journeyRef}/>

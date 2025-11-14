@@ -9,15 +9,16 @@ import mythanks from '../../assets/my/my-thanks.jpg';
 
 interface HeroBannerProps {
   position: String;
+  ready: Boolean;
 }
 
 function HeroBanner(props: HeroBannerProps) {
   // CONTEXTS
-  const { position } = props;
+  const { position, ready } = props;
 
   // RENDER
   return (
-    <div className="hero-banner">
+    <div className={`hero-banner ${!ready ? "--hidden" : ""}`}>
       <img className={position === 'welcome' ? "--active" : ""} src={myImage} alt='Hoàng Minh Ngọc' />
       <img className={position === 'info' ? "--active" : ""} src={myBook} alt='Hoàng Minh Ngọc' />
       <img className={position === 'skills' ? "--active" : ""} src={myLaptop} alt='Hoàng Minh Ngọc' />

@@ -8,6 +8,7 @@ function HeroInfo(props: HeroInfoProps) {
   // PROPS
   const { ref } = props;
 
+
   // RENDER
   return (
     <div className="hero-info" ref={ref}>
