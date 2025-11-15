@@ -2,6 +2,7 @@ import { useEffect, useRef, forwardRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './style.scss';
+import gsapConfig from '../../config/gsap.json';
 
 gsap.registerPlugin(useGSAP);
 
@@ -22,7 +23,6 @@ const HeroInfo = forwardRef<HTMLDivElement, HeroInfoProps>((props, ref) => {
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
     const endAnimPoint = windowHeight - windowHeight / 4;
-    const duration = 2;
 
     if (
       _nameRef.current &&
@@ -31,7 +31,7 @@ const HeroInfo = forwardRef<HTMLDivElement, HeroInfoProps>((props, ref) => {
     {
       gsap.to(
         _nameRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -42,7 +42,7 @@ const HeroInfo = forwardRef<HTMLDivElement, HeroInfoProps>((props, ref) => {
     {
       gsap.to(
         _descRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -53,7 +53,7 @@ const HeroInfo = forwardRef<HTMLDivElement, HeroInfoProps>((props, ref) => {
     {
       gsap.to(
         _metaDataRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
   };

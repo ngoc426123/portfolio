@@ -2,6 +2,7 @@ import { forwardRef, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './style.scss';
+import gsapConfig from '../../config/gsap.json';
 
 // IMAGES
 import imgSutrix from '../../assets/company/logo-sutrix.jpg';
@@ -27,7 +28,6 @@ const HeroJourney = forwardRef<HTMLDivElement, HeroJourneyProps>((props, ref) =>
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
     const endAnimPoint = windowHeight;
-    const duration = 2;
 
     if (
       _titleRef.current &&
@@ -36,7 +36,7 @@ const HeroJourney = forwardRef<HTMLDivElement, HeroJourneyProps>((props, ref) =>
     {
       gsap.to(
         _titleRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -47,7 +47,7 @@ const HeroJourney = forwardRef<HTMLDivElement, HeroJourneyProps>((props, ref) =>
     {
       gsap.to(
         _descRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -61,7 +61,7 @@ const HeroJourney = forwardRef<HTMLDivElement, HeroJourneyProps>((props, ref) =>
 
       gsap.to(
         yAxis,
-        { height: '100%', duration, ease: 'power3.out' }
+        { height: '100%', duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
 
       items.forEach((item) => {
@@ -73,23 +73,23 @@ const HeroJourney = forwardRef<HTMLDivElement, HeroJourneyProps>((props, ref) =>
         
         gsap.to(
           $imgLine,
-          { width: '4.8rem', duration, ease: 'power3.out', delay: 0.5 }
+          { width: '4.8rem', duration: gsapConfig.duration, ease: gsapConfig.ease, delay: 0.5 }
         );
         gsap.to(
           $img,
-          { y: 0, opacity: 1, duration, ease: 'power3.out', delay: duration }
+          { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease, delay: gsapConfig.duration }
         );
         gsap.to(
           $year,
-          { x: 0, opacity: 1, duration, ease: 'power3.out', delay: duration + 0.7 }
+          { x: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease, delay: gsapConfig.duration + 0.7 }
         );
         gsap.to(
           $name,
-          { x: 0, opacity: 1, duration, ease: 'power3.out', delay: duration + 0.9 }
+          { x: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease, delay: gsapConfig.duration + 0.9 }
         );
         gsap.to(
           $content,
-          { x: 0, opacity: 1, duration, ease: 'power3.out', delay: duration + 1.1 }
+          { x: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease, delay: gsapConfig.duration + 1.1 }
         );
       });
     }

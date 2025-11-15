@@ -3,7 +3,9 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ProgressBar from '../../components/ProgressBar';
 import './style.scss';
+import gsapConfig from '../../config/gsap.json';
 
+// IMAGES
 import imgHTML from '../../assets/skills/html.png';
 import imgCSS from '../../assets/skills/css.png';
 import imgJS from '../../assets/skills/js.png';
@@ -37,7 +39,6 @@ const HeroSkills = React.forwardRef<HTMLDivElement, HeroSkillsProps>((props, ref
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
     const endAnimPoint = windowHeight;
-    const duration = 2;
 
     if (
       _titleRef.current &&
@@ -46,7 +47,7 @@ const HeroSkills = React.forwardRef<HTMLDivElement, HeroSkillsProps>((props, ref
     {
       gsap.to(
         _titleRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -57,7 +58,7 @@ const HeroSkills = React.forwardRef<HTMLDivElement, HeroSkillsProps>((props, ref
     {
       gsap.to(
         _descRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -68,7 +69,7 @@ const HeroSkills = React.forwardRef<HTMLDivElement, HeroSkillsProps>((props, ref
     {
       gsap.to(
         _developTitleRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -79,7 +80,7 @@ const HeroSkills = React.forwardRef<HTMLDivElement, HeroSkillsProps>((props, ref
     {
       gsap.to(
         _applicationTitleRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -91,7 +92,7 @@ const HeroSkills = React.forwardRef<HTMLDivElement, HeroSkillsProps>((props, ref
       ) {
         gsap.to(
           skillRef,
-          { y: 0, opacity: 1, duration, ease: 'power3.out' }
+          { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
         );
       }
     });

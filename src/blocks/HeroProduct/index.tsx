@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import 'swiper/swiper.css';
 import './style.scss';
+import gsapConfig from '../../config/gsap.json';
 
 // COMPONENTS
 import Card from '../../components/Card';
@@ -42,7 +43,6 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
     const endAnimPoint = windowHeight;
-    const duration = 2;
 
     if (
       _titleRef.current &&
@@ -51,7 +51,7 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
     {
       gsap.to(
         _titleRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -62,7 +62,7 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
     {
       gsap.to(
         _descRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -74,7 +74,7 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
     {
       gsap.to(
         _subTitleRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease }
       );
     }
 
@@ -87,7 +87,7 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
       cards.forEach((card) => {
         gsap.to(
           card,
-          { y: 0, opacity: 1, duration, ease: 'power3.out', stagger: 1 }
+          { y: 0, opacity: 1, duration: gsapConfig.duration, ease: gsapConfig.ease, stagger: 1 }
         );
       });
     }
@@ -180,7 +180,7 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
               title="Dashboard Hop Am Thanh Ca"
               desc="A platform for Dashboard HATC to manage audio content and user interactions effectively."
               link="https://admin.hopamthanhca.com/"
-              tag={['RReactJS', 'Codeigniter', 'Material UI']}
+              tag={['ReactJS', 'Codeigniter', 'Material UI']}
             />
           </SwiperSlide>
           <SwiperSlide>
