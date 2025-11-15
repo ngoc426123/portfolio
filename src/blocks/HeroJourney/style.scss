@@ -80,8 +80,9 @@
       #{$this}__item-img {
         margin-left: -8rem;
 
-        &::before {
-          left: 100%;
+        span {
+          right: 0;
+          margin-right: -4.8rem;
         }
       }
 
@@ -96,8 +97,9 @@
       #{$this}__item-img {
         margin-left: 8rem;
 
-        &::before {
-          right: 100%;
+        span {
+          left: 0;
+          margin-left: -4.8rem;
         }
       }
 
@@ -115,8 +117,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    &::before {
-      content: "";
+    span {
       width: 4.8rem;
       height: 0.4rem;
       background-color: rgba(#ffffff, 0.5);

@@ -1,6 +1,8 @@
-import { forwardRef } from 'react';
+import { forwardRef, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import 'swiper/swiper.css';
 import './style.scss';
 
@@ -20,15 +22,99 @@ import pageMPFA from '../../assets/pages/mpfa.jpg';
 import pageTimeInAir from '../../assets/pages/time-in-air.jpg';
 import pageVisaNow from '../../assets/pages/visa-now.jpg';
 
-const HeroProduct = forwardRef<HTMLDivElement>((__, ref) => {
+gsap.registerPlugin(useGSAP);
+
+interface HeroProductProps {
+  ready: Boolean;
+}
+
+const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) => {
+  // PROPS
+  const { ready } = props;
+
+  // REFS
+  const _titleRef = useRef<HTMLDivElement>(null);
+  const _descRef = useRef<HTMLDivElement>(null);
+  const _subTitleRef = useRef<HTMLDivElement>(null);
+  const _listingRef = useRef<HTMLDivElement>(null);
+
+  // METHODS
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    const endAnimPoint = windowHeight;
+    const duration = 2;
+
+    if (
+      _titleRef.current &&
+      _titleRef.current?.getBoundingClientRect().top > 0 &&
+      _titleRef.current?.getBoundingClientRect().top < endAnimPoint) 
+    {
+      gsap.to(
+        _titleRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+
+    if (
+      _descRef.current &&
+      _descRef.current?.getBoundingClientRect().top > 0 &&
+      _descRef.current?.getBoundingClientRect().top < endAnimPoint) 
+    {
+      gsap.to(
+        _descRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+
+
+    if (
+      _subTitleRef.current &&
+      _subTitleRef.current?.getBoundingClientRect().top > 0 &&
+      _subTitleRef.current?.getBoundingClientRect().top < endAnimPoint) 
+    {
+      gsap.to(
+        _subTitleRef.current,
+        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+      );
+    }
+
+    if (
+      _listingRef.current &&
+      _listingRef.current?.getBoundingClientRect().top > 0 &&
+      _listingRef.current?.getBoundingClientRect().top < endAnimPoint) 
+    {
+      const cards = _listingRef.current.querySelectorAll('.card');
+      cards.forEach((card) => {
+        gsap.to(
+          card,
+          { y: 0, opacity: 1, duration, ease: 'power3.out', stagger: 1 }
+        );
+      });
+    }
+  };
+
+  // SIDE EFFECTS
+  useEffect(() => {
+    gsap.set(_titleRef.current, { y: 50, opacity: 0 });
+    gsap.set(_descRef.current, { y: 50, opacity: 0 });
+    gsap.set(_subTitleRef.current, { y: 50, opacity: 0 });
+    gsap.set(_listingRef.current?.querySelectorAll('.card') as NodeListOf<HTMLDivElement>, { y: 50, opacity: 0 });
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+  }, [ready]);
 
   // RENDER
   return (
     <div className="hero-product" ref={ref}>
-      <div className="hero-product__title"><span>Products</span> I've Built</div>
-      <div className="hero-product__desc">A showcase of web applications I've developed, from enterprise solutions to e-commerce platforms, demonstrating my expertise in modern web technologies.</div>
-      <div className="hero-product__sub-title">Some products I've worked on...</div>
-      <div className="hero-product__listing">
+      <div className="hero-product__title" ref={_titleRef}><span>Products</span> I've Built</div>
+      <div className="hero-product__desc" ref={_descRef}>A showcase of web applications I've developed, from enterprise solutions to e-commerce platforms, demonstrating my expertise in modern web technologies.</div>
+      <div className="hero-product__sub-title" ref={_subTitleRef}>Some products I've worked on...</div>
+      <div className="hero-product__listing" ref={_listingRef}>
         <Swiper
           spaceBetween={30}
           slidesPerView={3.4}

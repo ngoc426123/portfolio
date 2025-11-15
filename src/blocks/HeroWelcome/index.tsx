@@ -64,8 +64,8 @@ const HeroWelcome = forwardRef<HTMLDivElement, HeroWelcomeProps>((props, ref) =>
       _metaDataRef.current?.getBoundingClientRect().top < windowHeight) 
     {
       gsap.to(
-        _metaDataRef.current,
-        { y: 0, opacity: 1, duration, ease: 'power3.out' }
+        _metaDataRef.current?.querySelectorAll('a') as NodeListOf<HTMLAnchorElement>,
+        { y: 0, opacity: 1, duration, ease: 'power3.out', stagger: 0.2 }
       );
     }
   };
@@ -75,7 +75,7 @@ const HeroWelcome = forwardRef<HTMLDivElement, HeroWelcomeProps>((props, ref) =>
     gsap.set(_welcomeRef.current, { y: 100, opacity: 0 });
     gsap.set(_titleRef.current, { y: 100, opacity: 0 });
     gsap.set(_descRef.current, { y: 100, opacity: 0 });
-    gsap.set(_metaDataRef.current, { y: 100, opacity: 0 });
+    gsap.set(_metaDataRef.current?.querySelectorAll('a') as NodeListOf<HTMLAnchorElement>, { y: 100, opacity: 0 });
   }, []);
 
   useEffect(() => {

@@ -15,9 +15,6 @@ import HeroProduct from './blocks/HeroProduct'
 import HeroThanks from './blocks/HeroThanks'
 import LenisControls from './LenisControls'
 
-// BACKGROUND
-import bg from "./assets/bg.png";
-
 function App() {
   // REFS
   const _lenisRef = useRef<LenisRef>(null);
@@ -106,10 +103,10 @@ function App() {
           <LenisControls ready={ready}/>
           <HeroWelcome ref={_welcomeRef} ready={ready}/>
           <HeroInfo ref={_infoRef} ready={ready}/>
-          <HeroSkills ref={_skillsRef}  ready={ready}/>
-          <HeroJourney ref={_journeyRef}/>
-          <HeroProduct ref={_productRef}/>
-          <HeroThanks ref={_thanksRef}/>
+          <HeroSkills ref={_skillsRef} ready={ready}/>
+          <HeroJourney ref={_journeyRef} ready={ready}/>
+          <HeroProduct ref={_productRef} ready={ready}/>
+          <HeroThanks ref={_thanksRef} ready={ready}/>
         </div>
         <HeroLoading ready={ready}/>
       </div>
