@@ -117,11 +117,17 @@ const HeroProduct = forwardRef<HTMLDivElement, HeroProductProps>((props, ref) =>
       <div className="hero-product__listing" ref={_listingRef}>
         <Swiper
           spaceBetween={30}
-          slidesPerView={3.4}
+          slidesPerView={1.1}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           speed={1000}
           loop={true}
           modules={[Autoplay]}
+          breakpoints={{
+            320: { slidesPerView: 1.1, spaceBetween: 20 },
+            480: { slidesPerView: 1.5, spaceBetween: 20 },
+            1024: { slidesPerView: 2.4, spaceBetween: 30 },
+            1200: { slidesPerView: 4.4, spaceBetween: 30 },
+          }}
         >
           <SwiperSlide>
             <Card

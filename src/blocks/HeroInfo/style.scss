@@ -9,9 +9,17 @@
     font-size: 3.4rem;
     font-weight: 700;
 
+    @media screen and (max-width: 1280px) {
+      font-size: 2.8rem;
+    }
+
     span {
       font-size: 4.8rem;
       color: var(--primary);
+
+      @media screen and (max-width: 1280px) {
+        font-size: 3.8rem;
+      }
     }
   }
 
@@ -42,6 +50,10 @@
         margin-top: 1.5rem;
         width: 20rem;
         font-weight: 700;
+
+        @media screen and (max-width: 768px) {
+          width: 10rem;
+        }
       }
 
       dd {
@@ -49,6 +61,10 @@
         margin-top: 1.5rem;
         font-weight: 300;
         position: relative;
+
+        @media screen and (max-width: 768px) {
+          width: calc(100% - 10rem);
+        }
       }
     }
   }

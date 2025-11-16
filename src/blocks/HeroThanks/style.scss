@@ -7,18 +7,39 @@
   min-height: 100vh;
   padding: 10rem 0;
 
+  @media screen and (max-width: 1024px) {
+    justify-content: flex-start;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 5rem 0;
+  }
+
   &__text-thanks {
     font-family: 'Bonheur Royale', cursive;
     font-size: 16rem;
     color: var(--white);
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    @media screen and (max-width: 1024px) {
+      font-size: 10rem
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 7rem;
+    }
   }
 
   &__text-desc {
     font-size: large;
     font-weight: 100;
     text-align: center;
+
+    @media screen and (max-width: 1024px) {
+      max-width: 70%;
+      margin: 0 auto;
+    }
   }
 
   &__metadata {

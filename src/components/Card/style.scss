@@ -6,6 +6,7 @@
   border: solid 0.1rem rgba(#ffffff, 0.2);
   box-shadow: 0 0.4rem 3rem rgba(#000000, 0.2);
   border-radius: 1.5rem;
+  backdrop-filter: blur(1rem);
   overflow: hidden;
 
   &__content {

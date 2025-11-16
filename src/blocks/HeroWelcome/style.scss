@@ -4,18 +4,41 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
+  padding: 10rem 0;
+
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+    padding: 3.2rem 0;
+  }
 
   &__wel-text {
     font-family: 'Bonheur Royale', cursive;
     font-size: 10rem;
     line-height: normal;
     color: var(--primary);
+
+    @media screen and (max-width: 1280px) {
+      font-size: 8rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 6rem;
+      justify-content: flex-start;
+    }
   }
 
   &__title {
     font-size: 5.2rem;
     font-weight: 100;
     animation: flash-light 3s ease-in-out infinite;
+
+    @media screen and (max-width: 1280px) {
+      font-size: 4rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 3rem;
+    }
   }
 
   &__desc {
@@ -23,6 +46,14 @@
     margin-top: 1rem;
     font-size: 1.8rem;
     line-height: 2.8rem;
+
+    @media screen and (max-width: 1280px) {
+      font-size: 1.6rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.4rem;
+    }
   }
 
   &__metadata {
@@ -43,6 +74,11 @@
       border-radius: 50%;
       transition: background-color 0.3s linear, color 0.3s linear;
 
+      @media screen and (max-width: 768px) {
+        width: 4rem;
+        height: 4rem;
+      }
+
       &:hover {
         background-color: var(--primary);
         color: var(--white);
@@ -54,6 +90,10 @@
 
       span {
         font-size: 2.2rem;
+
+        @media screen and (max-width: 768px) {
+          font-size: 1.8rem;
+        }
       }
     }
   }
